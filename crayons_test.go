@@ -111,3 +111,38 @@ func (s *CrayonSuite) TestCrayonPrintln() {
 	s.Len(out, 44)
 	s.Equal(exp, out)
 }
+
+func (s *CrayonSuite) TestCrayonStyles() {
+	c := crayons.New(crayons.FgWhite, crayons.BgBlue, crayons.Underline)
+	styles := c.Styles()
+	s.Len(styles, 3)
+}
+
+func (s *CrayonSuite) TestCrayonPrepend() {
+	c := crayons.New(crayons.BgBlue, crayons.Underline)
+	styles := c.Styles()
+	s.Len(styles, 2)
+
+	c.Prepend(crayons.FgWhite)
+	styles = c.Styles()
+	s.Len(styles, 3)
+}
+
+func (s *CrayonSuite) TestCrayonColorize() {
+	str := crayons.Colorize("message", crayons.FgCyan)
+
+	c := crayons.New(crayons.FgCyan)
+	cstr := c.Sprint("message")
+	s.Equal(cstr, str)
+}
+
+func (s *CrayonSuite) TestCrayonMonochrome() {
+	old := crayons.Monochrome
+	crayons.Monochrome = true
+
+	c := crayons.New(crayons.FgCyan)
+	str := c.Sprint("message")
+	s.Equal("message", str)
+
+	crayons.Monochrome = old
+}

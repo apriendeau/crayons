@@ -42,6 +42,13 @@ func (s *BoxSuite) TestBoxStore() {
 
 	err = box.Store("tickle-me-pink", s.backupCrayon)
 	s.Error(err)
+
+	err = box.Store("jazzberry-jam", nil)
+	s.Error(err)
+
+	box = crayons.NewBox(nil)
+	crayon := box.Pick("base")
+	s.Equal(crayons.New(crayons.FgWhite, crayons.BgBlack), crayon)
 }
 
 func (s *BoxSuite) TestBoxPick() {
@@ -51,6 +58,9 @@ func (s *BoxSuite) TestBoxPick() {
 
 	crayon := box.Pick("tickle-me-pink")
 	s.Equal(s.backupCrayon, crayon)
+
+	crayon = box.Pick("no-crayon")
+	s.Equal(s.defaultCrayon, crayon)
 }
 
 func (s *BoxSuite) TestBoxRemove() {
