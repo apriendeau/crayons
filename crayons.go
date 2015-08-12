@@ -45,6 +45,8 @@ const (
 	FgMagenta
 	FgCyan
 	FgBrightGrey
+	_ // unused
+	DefaultFg
 )
 
 // Bright Foreground Colors
@@ -69,6 +71,8 @@ const (
 	BgMagenta
 	BgCyan
 	BgLightGrey
+	_ // unused
+	DefaultBg
 )
 
 // Bright Background Colors
