@@ -117,6 +117,7 @@ func (c *Crayon) Prepend(s Style) *Crayon {
 // Apply is the manual way of enabling the style for your string
 // but will remain in effect unless you call Reset.
 func (c *Crayon) Apply() *Crayon {
+	fmt.Println("here!")
 	if !Monochrome {
 		fmt.Fprintf(Writer, c.Fmt())
 	}
@@ -205,7 +206,5 @@ func (c *Crayon) Unfmt() string {
 // Shortcut funcs
 func Colorize(str string, styles ...Style) string {
 	c := New(styles...)
-	c.Apply()
-	defer c.Reset()
 	return c.wrap(str)
 }
