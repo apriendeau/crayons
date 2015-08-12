@@ -12,13 +12,13 @@ different styles.
 ## Installing
 
 ```bash
-	go get github.com/apriendeau/crayons
+go get github.com/apriendeau/crayons
 ```
 
 
 ## Basic Usage
 
-```golang
+```go
 package main
 
 import(
