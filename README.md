@@ -3,7 +3,7 @@
 [![GoDoc](http://img.shields.io/badge/go-docs-blue.svg?style=flat-square)](https://godoc.org/github.com/apriendeau/crayons)
 
 There are alot of ANSI color libraries but none of them were useful for larger
-impletations. It is heavily modeled after [fatih/color](https://github.com/fatih/color)
+implementations. It is heavily modeled after [fatih/color](https://github.com/fatih/color)
 but exposes things slightly differently and adds a concept of grouping
 different styles.
 
