@@ -19,7 +19,7 @@ type box struct {
 func NewBox(base *Crayon) *box {
 	c := make(map[string]*Crayon)
 	if base == nil {
-		base = New(FgWhite, BgBlack)
+		base = New(DefaultFg, DefaultBg)
 	}
 	c["base"] = base
 	return &box{Crayons: c}

@@ -17,7 +17,8 @@ var Writer = ansicolor.NewAnsiColorWriter(os.Stdout)
 type Style int
 
 type Crayon struct {
-	styles []Style
+	styles     []Style
+	monochrome bool
 }
 
 const escape = "\x1b"
@@ -92,7 +93,8 @@ const (
 // and it will add them all.
 func New(styles ...Style) *Crayon {
 	c := &Crayon{
-		styles: make([]Style, 0),
+		styles:     make([]Style, 0),
+		monochrome: Monochrome,
 	}
 	c.Append(styles...)
 	return c
@@ -115,10 +117,17 @@ func (c *Crayon) Prepend(s Style) *Crayon {
 	return c
 }
 
+func (c *Crayon) Monochrome(m bool) {
+	if Monochrome {
+		return
+	}
+	c.monochrome = m
+}
+
 // Apply is the manual way of enabling the style for your string
 // but will remain in effect unless you call Reset.
 func (c *Crayon) Apply() *Crayon {
-	if !Monochrome {
+	if !c.monochrome {
 		fmt.Fprintf(Writer, c.Fmt())
 	}
 	return c
@@ -126,7 +135,7 @@ func (c *Crayon) Apply() *Crayon {
 
 // Reset starts clears the styles that are enabled in the writer.
 func (c *Crayon) Reset() *Crayon {
-	if !Monochrome {
+	if !c.monochrome {
 		fmt.Fprintf(Writer, "%s[%dm", escape, Clear)
 	}
 	return c
@@ -212,7 +221,7 @@ func (c *Crayon) seq() string {
 }
 
 func (c *Crayon) wrap(s string) string {
-	if Monochrome {
+	if c.monochrome {
 		return s
 	}
 	return c.Fmt() + s + c.Unfmt()
