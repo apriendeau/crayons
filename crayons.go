@@ -2,6 +2,7 @@ package crayons
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -172,11 +173,34 @@ func (c *Crayon) Sprintf(base string, a ...interface{}) string {
 	return c.wrap(end)
 }
 
+// Sprintln wraps color around a fmt.Sprintln.
 func (c *Crayon) Sprintln(a ...interface{}) string {
 	c.Apply()
 	defer c.Reset()
 	end := fmt.Sprintln(a...)
 	return c.wrap(end)
+}
+
+// Fatal will fmt.Sprint the interfaces and then wrap the color then log.Fatal
+func (c *Crayon) Fatal(a ...interface{}) {
+	c.Apply()
+	defer c.Reset()
+
+	log.Fatal(c.wrap(fmt.Sprint(a...)))
+}
+
+// Fatalf acts like Fatal but with a formatted string
+func (c *Crayon) Fatalf(msg string, a ...interface{}) {
+	c.Apply()
+	defer c.Reset()
+	log.Fatal(c.wrap(fmt.Sprintf(msg, a...)))
+}
+
+// Fatalln is log.Fatalln so it appends a new line at the end.
+func (c *Crayon) Fatalln(a ...interface{}) {
+	c.Apply()
+	defer c.Reset()
+	log.Fatalln(c.wrap(fmt.Sprint(a...)))
 }
 
 func (c *Crayon) seq() string {
