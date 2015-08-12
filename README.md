@@ -8,3 +8,32 @@ but exposes things slightly differently and adds a concept of grouping
 different styles.
 
 
+
+## Installing
+
+```bash
+	go get github.com/apriendeau/crayons
+```
+
+
+## Basic Usage
+
+```golang
+package main
+
+import(
+	"fmt"
+	"github.com/apriendeau/crayons"
+)
+
+func main() {
+	c := crayons.New(crayons.FgBrightCyan, crayons.BgBlack)
+
+	c.Println("blizzard blue")
+
+	str := c.Sprintf("blizzard %s", "blue")
+	fmt.Println(str)
+}
+
+```
+
