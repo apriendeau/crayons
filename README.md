@@ -1,4 +1,4 @@
-# crayons
+![crayons](https://cloud.githubusercontent.com/assets/700344/9230514/d3e3b2f2-40df-11e5-8f22-cf70a69a08ed.png)
 
 [![GoDoc](https://godoc.org/github.com/apriendeau/crayons?status.svg)](https://godoc.org/github.com/apriendeau/crayons)
 
