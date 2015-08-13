@@ -8,7 +8,7 @@ but exposes things slightly differently and adds a concept of grouping
 different styles.
 
 **This is very conceptual right now and in alpha so note, there might be
-some changes and is not stable just yet**
+some changes and is not stable just yet and is totally just a POC repo for me at this point.**
 
 ## Installing
 
