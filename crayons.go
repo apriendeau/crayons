@@ -11,11 +11,17 @@ import (
 	"github.com/shiena/ansicolor"
 )
 
-var Monochrome = !isatty.IsTerminal(os.Stdout.Fd())
-var Writer = ansicolor.NewAnsiColorWriter(os.Stdout)
+var (
+	// Writer is a where crayons will draw too
+	Writer = ansicolor.NewAnsiColorWriter(os.Stdout)
+	// Monochrome checkts if it is tty
+	Monochrome = !isatty.IsTerminal(os.Stdout.Fd())
+)
 
+// Style is alias type for int
 type Style int
 
+//Crayon is the structure for a crayon. It contains unexported fields
 type Crayon struct {
 	styles     []Style
 	monochrome bool
@@ -99,6 +105,8 @@ func New(styles ...Style) *Crayon {
 	c.Append(styles...)
 	return c
 }
+
+// Styles returns all the stored styles for a crayon
 func (c *Crayon) Styles() []Style {
 	return c.styles
 }
@@ -117,6 +125,7 @@ func (c *Crayon) Prepend(s Style) *Crayon {
 	return c
 }
 
+// Monochrome lets you set an individual crayon
 func (c *Crayon) Monochrome(m bool) {
 	if Monochrome {
 		return
@@ -227,15 +236,17 @@ func (c *Crayon) wrap(s string) string {
 	return c.Fmt() + s + c.Unfmt()
 }
 
+// Fmt is the start of the ANSI color string
 func (c *Crayon) Fmt() string {
 	return fmt.Sprintf("%s[%sm", escape, c.seq())
 }
 
+// Unfmt is an end of the ANSI color string
 func (c *Crayon) Unfmt() string {
 	return fmt.Sprintf("%s[%dm", escape, Clear)
 }
 
-// Shortcut funcs
+// Colorize is a shortcut for styling.
 func Colorize(str string, styles ...Style) string {
 	c := New(styles...)
 	return c.wrap(str)
