@@ -9,8 +9,9 @@ var (
 	// ErrRemoveBase is when you try to remove the base crayon
 	ErrRemoveBase = errors.New("Cannot remove base crayon")
 	// ErrNilCrayon occurs when you attempt to store a nil crayon
-	ErrNilCrayon  = errors.New("Crayon cannot be a nil reference")
+	ErrNilCrayon = errors.New("Crayon cannot be a nil reference")
 )
+
 // Box is collection of crayons.
 type Box struct {
 	Crayons map[string]*Crayon
