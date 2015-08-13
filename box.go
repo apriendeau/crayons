@@ -9,7 +9,7 @@ var (
 	ErrRemoveBase = errors.New("Cannot remove base crayon")
 	ErrNilCrayon  = errors.New("Crayon cannot be a nil reference")
 )
-
+// Box is collection of crayons.
 type Box struct {
 	Crayons map[string]*Crayon
 }
