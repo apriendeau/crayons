@@ -23,7 +23,6 @@ func TestBoxSuite(t *testing.T) {
 }
 
 func (s *BoxSuite) TestNewBox() {
-	s.T().Parallel()
 	box := crayons.NewBox(s.defaultCrayon)
 	s.NotNil(box)
 
@@ -33,7 +32,6 @@ func (s *BoxSuite) TestNewBox() {
 }
 
 func (s *BoxSuite) TestBoxStore() {
-	s.T().Parallel()
 	box := crayons.NewBox(s.defaultCrayon)
 	err := box.Store("tickle-me-pink", s.backupCrayon)
 	s.NoError(err)
@@ -50,11 +48,11 @@ func (s *BoxSuite) TestBoxStore() {
 
 	box = crayons.NewBox(nil)
 	crayon := box.Pick("base")
-	s.Equal(crayons.New(crayons.FgWhite, crayons.BgBlack), crayon)
+	c := crayons.New(crayons.DefaultFg, crayons.DefaultBg)
+	s.Equal(c, crayon)
 }
 
 func (s *BoxSuite) TestBoxPick() {
-	s.T().Parallel()
 	box := crayons.NewBox(s.defaultCrayon)
 	err := box.Store("tickle-me-pink", s.backupCrayon)
 	s.NoError(err)

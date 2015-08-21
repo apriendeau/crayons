@@ -141,6 +141,10 @@ func (s *CrayonSuite) TestCrayonMonochrome() {
 	crayons.Monochrome = true
 
 	c := crayons.New(crayons.FgCyan)
+	c.Monochrome(false)
+	s.Equal(crayons.Monochrome, true)
+	crayons.Monochrome = false
+	c.Monochrome(true)
 	str := c.Sprint("message")
 	s.Equal("message", str)
 
