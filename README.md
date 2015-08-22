@@ -3,6 +3,7 @@
 [![GoDoc](http://img.shields.io/badge/go-docs-blue.svg?style=flat-square)](https://godoc.org/github.com/apriendeau/crayons)
 [![Build Status](https://img.shields.io/travis/apriendeau/crayons/master.svg?style=flat-square)](https://travis-ci.org/apriendeau/crayons)
 [![Coverage](https://img.shields.io/coveralls/apriendeau/crayons/master.svg?style=flat-square)](https://coveralls.io/github/apriendeau/crayons?branch=master)
+[![MIT License](https://img.shields.io/github/license/apriendeau/crayons.svg?style=flat-square)](https://github.com/apriendeau/crayons/blob/master/LICENSE)
 
 There are alot of ANSI color libraries but none of them were useful for larger
 implementations. It is heavily modeled after [fatih/color](https://github.com/fatih/color)
