@@ -1,6 +1,7 @@
 ![crayons](https://cloud.githubusercontent.com/assets/700344/9230514/d3e3b2f2-40df-11e5-8f22-cf70a69a08ed.png)
 
 [![GoDoc](http://img.shields.io/badge/go-docs-blue.svg?style=flat-square)](https://godoc.org/github.com/apriendeau/crayons)
+[![Build Status](https://img.shields.io/travis/apriendeau/crayons/master.svg?style=flat-square)](https://travis-ci.org/apriendeau/crayons)
 
 There are alot of ANSI color libraries but none of them were useful for larger
 implementations. It is heavily modeled after [fatih/color](https://github.com/fatih/color)
